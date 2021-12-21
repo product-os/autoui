@@ -1,0 +1,24 @@
+{
+  "name": "autoui-project-generator",
+  "version": "0.0.1",
+  "description": "Generate a UI based on a OData OpenAPI JSON file",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create": "bash start.sh",
+    "create-app": "create-react-app autoui-project --template file:./autoui-template-typescript"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balena-io-playground/autoui-project-generator.git"
+  },
+  "keywords": [
+    "auotui"
+  ],
+  "author": "Andrea Rosci",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/balena-io-playground/autoui-project-generator/issues"
+  },
+  "homepage": "https://github.com/balena-io-playground/autoui-project-generator#readme"
+}

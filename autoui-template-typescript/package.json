@@ -1,0 +1,20 @@
+{
+  "name": "balena-autoui-template-typescript",
+  "version": "1.1.2",
+  "main": "index.tsx",
+  "keywords": [
+    "react",
+    "create-react-app",
+    "template",
+    "typescript"
+  ],
+  "description": "The base TypeScript template for Create React App.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "template",
+    "template.json"
+  ]
+}
