@@ -31,12 +31,12 @@ for i in "$@"; do
       shift
       ;;
     --openapi=*)
-      echo "Open API JSON path:" ${i#*=}
+      echo "Open API JSON path or url:" ${i#*=}
       OPEN_API_ODATA_JSON_PATH=${i#*=}
       shift
       ;;
     --logo=*)
-      echo "Logo path:" ${i#*=}
+      echo "Logo path or url:" ${i#*=}
       LOGO_PATH=${i#*=}
       shift
       ;;
@@ -60,16 +60,27 @@ do
   sleep 2s 
 done
 
-OPEN_API_JSON=$(cat $OPEN_API_ODATA_JSON_PATH);
+regex='(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]'
 
-rm -rf ./autoui-project && npm run create-app && cp $LOGO_PATH ./autoui-project/src/ && cd autoui-project
-# TODO: Update rendition react version to make it compatible and avoid these steps
-npm uninstall react react-dom --silent && npm i --save @types/react@^16.14.5 @types/react-dom@^16.9.11 react@^16.14.0 react-dom@^16.14.0 --silent
+if [[ $OPEN_API_ODATA_JSON_PATH =~ $regex ]]
+then
+    OPEN_API_JSON=$(curl $OPEN_API_ODATA_JSON_PATH);
+else
+    OPEN_API_JSON=$(cat $OPEN_API_ODATA_JSON_PATH);
+fi
 
-echo $OPEN_API_JSON > ./src/open-api.json
-echo REACT_APP_API_HOST=$API_HOST >> ./.env
-echo REACT_APP_TITLE=$TITLE >> ./.env
+if [[ $LOGO_PATH =~ $regex ]]
+then
+    LOGO=$(curl $LOGO_PATH);
+else
+    LOGO=$(cat $LOGO_PATH);
+fi
 
-cd ..
-
-
+rm -rf ./autoui-project && npm run create-app && cd autoui-project \
+&& npm uninstall react react-dom --silent && npm i --save @types/react@^16.14.5 @types/react-dom@^16.9.11 react@^16.14.0 react-dom@^16.14.0 --silent \
+&& echo $LOGO > ./src/logo.svg \
+&& echo $OPEN_API_JSON > ./src/open-api.json \
+&& echo REACT_APP_API_HOST=$API_HOST >> ./.env \
+&& echo REACT_APP_TITLE=$TITLE >> ./.env \
+&& npm run build \
+&& cd ..
