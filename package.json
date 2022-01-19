@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "create": "bash start.sh",
-    "create-app": "create-react-app autoui-project --template file:./autoui-template-typescript"
+    "create-app": "npx create-react-app autoui-project --template file:./autoui-template-typescript"
   },
   "repository": {
     "type": "git",
