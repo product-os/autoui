@@ -1,6 +1,6 @@
 {
   "name": "autoui-project-generator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Generate a UI based on a OData OpenAPI JSON file",
   "main": "index.tsx",
   "scripts": {
@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/balena-io-playground/autoui-project-generator#readme",
   "versionist": {
-    "publishedAt": "2022-02-01T15:43:10.210Z"
+    "publishedAt": "2022-02-08T17:27:23.948Z"
   }
 }
