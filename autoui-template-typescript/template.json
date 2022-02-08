@@ -2,7 +2,7 @@
   "package": {
     "dependencies": {
       "@types/node": "^16.7.13",
-      "rendition": "^24.2.0",
+      "rendition": "^25.9.0",
       "styled-components": "^5.3.3",
       "web-vitals": "^2.1.2",
       "typescript": "^4.4.2"
